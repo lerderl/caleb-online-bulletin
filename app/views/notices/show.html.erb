@@ -1,26 +1,34 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @notice.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @notice.body %>
-</p>
-
-<p>
-  <strong>Attachments:</strong>
-  <ul>
-    <% @notice.files.each do |file| %>
-      <li>
-        <%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>
-        <%= link_to 'Remove', delete_file_notice_url(file.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-      </li>
-    <% end %>
-  </ul>
-</p>
-
-<%= link_to 'Edit', edit_notice_path(@notice) %>
-<%= link_to 'Back', notices_path %>
+<div id="page-content">
+  <h2 class="text-center mt-4"><%= @notice.title %></h2>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            by Lerderl
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= simple_format(@notice.body) %></p>
+            <%= link_to "Edit", edit_notice_path(@notice), class: "btn btn-outline-info" %>
+            <%= link_to "Delete", notice_path(@notice), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+          <p>
+            <strong>Attachments:</strong>
+            <ul>
+              <% @notice.files.each do |file| %>
+                <li>
+                  <%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>
+                  <%= link_to 'Remove', delete_file_notice_url(file.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </li>
+              <% end %>
+            </ul>
+          </p>
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(@notice.created_at) %> ago, 
+            edited <%= time_ago_in_words(@notice.updated_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
