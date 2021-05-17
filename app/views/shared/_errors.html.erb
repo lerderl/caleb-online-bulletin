@@ -1,0 +1,17 @@
+<% if @notice.errors.any? %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <h2 class="alert-heading"><%= pluralize(@notice.errors.count, "error") %> prohibited this notice from being saved:</h2>
+  <ul>
+    <% @notice.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <%# <div class="alert alert-warning alert-dismissible fade show" role="alert"> %>
+  <%# <strong>Holy guacamole!</strong> You should check in on some of those fields below. %>
+  <%# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> %>
+</div>
+</div>
+<% end %>
