@@ -56,6 +56,12 @@ class NoticesController < ApplicationController
     end
   end
 
+  def delete_file
+    file = ActiveStorage::Attachment.find(params[:id])
+    file.purge
+    redirect_back(fallback_location: notices_path)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notice
@@ -64,6 +70,6 @@ class NoticesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def notice_params
-      params.require(:notice).permit(:title, :body)
+      params.require(:notice).permit(:title, :body, files: [])
     end
 end

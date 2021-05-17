@@ -10,5 +10,17 @@
   <%= @notice.body %>
 </p>
 
+<p>
+  <strong>Attachments:</strong>
+  <ul>
+    <% @notice.files.each do |file| %>
+      <li>
+        <%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>
+        <%= link_to 'Remove', delete_file_notice_url(file.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_notice_path(@notice) %> |
 <%= link_to 'Back', notices_path %>
