@@ -3,7 +3,7 @@
     <div class="container-fluid py-5 text-center text-white">
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>
+          Logged in as <strong><%= current_user.username %></strong>
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-primary me-md-2 text-white' %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-primary text-white'  %>
         <% else %>
