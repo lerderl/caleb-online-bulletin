@@ -7,6 +7,10 @@
 .nav-link {
   color: white !important;
 }
+
+.text {
+  font-family: Copperplate, fantasy;
+}
   
 #logo {
   float: left;
@@ -36,7 +40,10 @@ body {
 
 #page-content {
   flex: 1 0 auto;
-  background-color: lightgrey;
+  background-image: asset-url('caleb.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 #sticky-footer {
